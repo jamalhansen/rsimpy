@@ -1,6 +1,6 @@
 = rsimpy
 
-Description goes here.
+A wrapper around the simpy rest api.
 
 == Copyright
 
