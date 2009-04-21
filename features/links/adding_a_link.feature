@@ -4,9 +4,10 @@ Feature: Post a link to a simpy account
   I want to post a link to my simpy account via rsimpy
  
   Scenario: Add link
-    Given the link "http://www.google.com"
-    And the user "rsimpy"
+    Given the user "rsimpy"
     And the password "rsimpy"
-    When I add the link 
+    When I pass the link "http://www.example.com"
+    And the title "example"
+    And tell rsimpy to save
     Then the link is added to Simpy
     

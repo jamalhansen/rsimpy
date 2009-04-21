@@ -5,16 +5,28 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rsimpy"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{API Wrapper for simpy.com}
     gem.email = "jamal.hansen@gmail.com"
     gem.homepage = "http://github.com/rubyyot/rsimpy"
     gem.authors = ["Jamal Hansen"]
+    gem.add_dependency('httparty', '>= 0.4.3')
+    gem.add_dependency('khayyam', '>= 0.0.1')
+
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
+
+require 'rubygems'
+require 'cucumber'
+require 'cucumber/rake/task'
+
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty" 
+end
+
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|

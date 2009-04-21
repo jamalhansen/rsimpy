@@ -1,8 +1,12 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'test'))
-require 'test_helper'
+require 'feature_helper'
 
-Given /^the link "([^\"]*)"$/ do |link|
+When /^I pass the link "([^\"]*)"$/ do |link|
   @link = link
+end
+
+When /^the title "([^\"]*)"$/ do |title|
+  @title = title
 end
 
 Given /^the user "([^\"]*)"$/ do |user|
@@ -13,10 +17,11 @@ Given /^the password "([^\"]*)"$/ do |password|
   @password = password
 end
 
-When /^I add the link$/ do
-  @result = RSimpy::LinkPostingService.new(ClientStub.new).post :href => "http://example.com", :title => "Example"
+When /^tell rsimpy to save$/ do
+  params = RSimpy::Parameters.new :href => @link, :title => @title
+  @result = RSimpy::LinkPostingService.new(ClientStub.new).post params
 end
 
 Then /^the link is added to Simpy$/ do
-  @result = 200
+  assert 200 == @result
 end

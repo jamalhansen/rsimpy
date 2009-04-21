@@ -5,12 +5,11 @@ module RSimpy
     end
 
     def post params
-      @params = params
-      @client.post build_link
+      @client.post build_link params
     end
 
-    def build_link
-      "/SaveLink.do?title=#{@params[:title]}&href=#{@params[:href]}&accessType=1"
+    def build_link params
+      "/SaveLink.do?title=#{params[:title]}&href=#{params[:href]}&accessType=1"
     end
   end
 end
