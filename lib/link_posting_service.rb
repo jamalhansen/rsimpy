@@ -9,7 +9,8 @@ module RSimpy
     end
 
     def build_link params
-      "/SaveLink.do?title=#{params[:title]}&href=#{params[:href]}&accessType=1"
+      params.add('accessType', 1)
+      "/SaveLink.do?" << params.to_querystring
     end
   end
 end

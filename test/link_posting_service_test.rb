@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'cgi'
 
 class LinkPostingServiceCanDoABasicPost < Test::Unit::TestCase
   #http://www.simpy.com/doc/api/rest/SaveLink
@@ -12,7 +13,12 @@ class LinkPostingServiceCanDoABasicPost < Test::Unit::TestCase
     params = RSimpy::Parameters.new :href => "http://example.com", :title => "Example"
     service = RSimpy::LinkPostingService.new(@client)
     result = service.post params
-    assert_equal "/SaveLink.do?title=Example&href=http://example.com&accessType=1",  @client.link
+    link = CGI.unescape(@client.link)
+    assert /\/SaveLink.do?/ =~ link
+    assert /title=Example/ =~ link
+    assert /href=http:\/\/example.com/ =~ link
+    assert /accessType=1/ =~ link
+    assert /\?.*&.*&/ =~ link
     assert_equal 200, result
   end
 end
