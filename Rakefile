@@ -9,7 +9,7 @@ begin
     gem.email = "jamal.hansen@gmail.com"
     gem.homepage = "http://github.com/rubyyot/rsimpy"
     gem.authors = ["Jamal Hansen"]
-    gem.add_dependency('httparty', '>= 0.4.3')
+    gem.add_dependency('httparty', '>= 0.4.2')
     gem.add_dependency('khayyam', '>= 0.0.1')
 
 

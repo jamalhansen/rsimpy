@@ -8,9 +8,17 @@ module RSimpy
       self.class.basic_auth user.username, user.pass
     end
 
-    def get action
+    def get uri
       begin
-	self.class.get action
+	self.class.get uri
+      rescue SocketError => error
+	raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
+      end
+    end
+
+    def post uri
+      begin
+	self.class.post action
       rescue SocketError => error
 	raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
       end
