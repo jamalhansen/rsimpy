@@ -14,7 +14,7 @@ class LinkPostingServiceCanDoABasicPost < Test::Unit::TestCase
     service = RSimpy::LinkPostingService.new(@client)
     result = service.post params
     link = CGI.unescape(@client.link)
-    assert /\/SaveLink.do?/ =~ link
+    assert /\/SaveLink.do\?/ =~ link
     assert /title=Example/ =~ link
     assert /href=http:\/\/example.com/ =~ link
     assert /accessType=1/ =~ link

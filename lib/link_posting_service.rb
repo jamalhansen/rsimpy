@@ -9,7 +9,8 @@ module RSimpy
     end
 
     def build_link params
-      params.add('accessType', 1)
+      params.add(:accessType, 1) unless params[:accessType] == 0
+    puts params.to_querystring
       "/SaveLink.do?" << params.to_querystring
     end
   end

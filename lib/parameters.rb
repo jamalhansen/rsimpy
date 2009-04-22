@@ -10,6 +10,10 @@ module RSimpy
       @params[key]
     end
 
+    def []= key, value
+      @params[key] = value
+    end
+
     def to_querystring
       output = ""
 
