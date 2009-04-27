@@ -1,10 +1,10 @@
 module RSimpy
   class User
-    attr_reader :username, :pass
+    attr_reader :username, :password
 
-    def initialize(user, pass)
-      @username = user
-      @pass = pass
+    def initialize params={}
+      @username = params[:username]
+      @password = params[:password]
     end
   end
 end

@@ -1,16 +1,17 @@
 module RSimpy
   class LinkQueryingService
-    def initialize client, params = {}
+    def initialize client
       @client = client
-      @params = params
     end
 
-    def get
-      @client.get build_link
+    def get                                                   
+      params = RSimpy::Parameters.new unless params
+      @client.get build_link params
     end
 
-    def build_link
-      "/GetLinks.do"
+    def build_link params
+      params.add(:src, 'rsimpy')
+      "/GetLinks.do?" << params.to_querystring
     end
   end
 end

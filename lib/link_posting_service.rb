@@ -10,7 +10,7 @@ module RSimpy
 
     def build_link params
       params.add(:accessType, 1) unless params[:accessType] == 0
-    puts params.to_querystring
+      params.add(:src, 'rsimpy')
       "/SaveLink.do?" << params.to_querystring
     end
   end

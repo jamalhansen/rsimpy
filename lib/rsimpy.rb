@@ -6,6 +6,8 @@ require 'user'
 require 'link_querying_service'      
 require 'link_posting_service'            
 require 'parameters'  
+require 'configuration'
+require 'profile_storage_service'
 
 module RSimpy
   

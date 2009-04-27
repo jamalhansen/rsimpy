@@ -18,7 +18,8 @@ class LinkPostingServiceCanDoABasicPost < Test::Unit::TestCase
     assert /title=Example/ =~ link
     assert /href=http:\/\/example.com/ =~ link
     assert /accessType=1/ =~ link
-    assert /\?.*&.*&/ =~ link
+    assert /\?.*&.*&.*&/ =~ link
+    assert /src=rsimpy/ =~ link
     assert_equal 200, result
   end
 end

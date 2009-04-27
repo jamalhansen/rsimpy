@@ -75,3 +75,17 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+namespace :user do
+
+  desc 'store simpy login in cleartext in your home directory for safekeeping.  Use rake user:config username=USERNAME password=PASSWORD'
+  task :config do
+    require 'rsimpy'
+    
+    user = RSimpy::User.new :username => ENV['username'], :password => ENV['password']
+    config = RSimpy::Configuration.new RSimpy::ProfileStorageService.new
+    config.user = user
+    config.save
+  end
+
+end
+
