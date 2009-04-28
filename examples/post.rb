@@ -1,7 +1,12 @@
 require 'rubygems'
 require 'rsimpy'  
 
+# Prepare to post
 client = RSimpy::Client.new(RSimpy::User.new('USERNAME', 'PASSWORD'))
-params = RSimpy::Parameters.new :href => "http://www.hanselminutes.com", :title => "Hanselminutes", :tags => 'alt.net,podcast'                                                                                  
 service = RSimpy::LinkPostingService.new(client)
+
+# Setup the post parameters
+params = RSimpy::Parameters.new :href => "http://www.example.com", :title => "Example Site", :tags => 'search'
+
+# Post
 service.post params

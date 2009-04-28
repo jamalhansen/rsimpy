@@ -2,4 +2,4 @@ tmp*
 log*
 *[~#]
 optparse_example.rb
-pkg*
+pkg/*
