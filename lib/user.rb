@@ -12,14 +12,14 @@ module RSimpy
   #
   # For example:
   #
-  # user = RSimpy::User.new :user => 'example', :pass => '1234'
+  #   user = RSimpy::User.new :user => 'example', :pass => '1234'
   #
   # Or you can use a block:
   #
-  # user = RSimpy::User.new do
-  # login :example
-  # pass :1234
-  # end
+  #   user = RSimpy::User.new do
+  #     login :example
+  #     pass :1234
+  #   end
   class User
     attr_reader :username, :password
 
