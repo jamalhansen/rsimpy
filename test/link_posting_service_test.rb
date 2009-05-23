@@ -11,6 +11,7 @@ class LinkPostingServiceCanDoABasicPost < Test::Unit::TestCase
 
   def test_basic_post
     params = RSimpy::Parameters.new :href => "http://example.com", :title => "Example"
+
     service = RSimpy::LinkPostingService.new(@client)
     result = service.post params
     link = CGI.unescape(@client.link)

@@ -10,3 +10,5 @@ params = RSimpy::Parameters.new :href => "http://www.example.com", :title => "Ex
 
 # Post
 service.post params
+
+

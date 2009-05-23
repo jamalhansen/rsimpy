@@ -19,7 +19,7 @@ class ProfileStorageServiceTest < Test::Unit::TestCase
   def test_can_store_data
     fixture_path = File.join ['test', 'fixtures', 'test']
     service = RSimpy::ProfileStorageService.new  fixture_path
-    user = RSimpy::User.new :username => 'foo', :password => 'bar'
+    user = RSimpy::User.new :login => 'foo', :pass => 'bar'
     service.save :user => user
 
     service = RSimpy::ProfileStorageService.new  fixture_path

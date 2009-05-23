@@ -4,6 +4,7 @@
   require 'optparse/time'
   require 'ostruct'
   require 'pp'
+  $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
   require 'rsimpy'
 
   class Simp

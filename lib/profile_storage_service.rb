@@ -35,8 +35,8 @@ module RSimpy
 
       topic = Khayyam::Topic.import file
       topic.regarding "user" do |items|
-        data[:username] = items["username"]
-        data[:password] = items["password"]
+        data[:login] = items["username"]
+        data[:pass] = items["password"]
       end
 
       output = topic.export

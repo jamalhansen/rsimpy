@@ -14,7 +14,7 @@ class ConfigurationTest < Test::Unit::TestCase
   def test_can_save_user_info
     storage_service = StorageBuilder.new.without_stored_configuration.build
     config = RSimpy::Configuration.new storage_service
-    config.user = RSimpy::User.new(:username => 'foo', :password => 'bar')
+    config.user = RSimpy::User.new(:login => 'foo', :pass => 'bar')
 
     assert config.save
     assert storage_service.user.username == 'foo'

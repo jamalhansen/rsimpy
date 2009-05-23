@@ -11,6 +11,9 @@ begin
     gem.authors = ["Jamal Hansen"]
     gem.add_dependency('httparty', '>= 0.4.2')
     gem.add_dependency('khayyam', '>= 0.0.1')
+    gem.add_dependency('khayyam', '>= 0.0.1')
+    gem.add_development_dependency 'jabber4r', '>= 1.2.0'
+
 
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings

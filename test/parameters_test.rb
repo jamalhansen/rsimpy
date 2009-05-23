@@ -8,6 +8,7 @@ class ParametersTest < Test::Unit::TestCase
 
   def test_can_convert_to_querystring
     params = RSimpy::Parameters.new :foo => 'bar', :baz => 2
+    
     querystring = params.to_querystring
     assert /foo=bar/ =~ querystring
     assert /baz=2/ =~ querystring

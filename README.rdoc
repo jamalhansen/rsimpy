@@ -14,3 +14,9 @@ While basic link queries are supported as well, this and the rest of the API has
 == Examples
 
 See examples folder
+
+== Configuration
+
+To store your Simpy username and config in ~/.rsimpy (not encrypted), you can run the Rake task:
+
+rake user:config username=USERNAME password=PASSWORD

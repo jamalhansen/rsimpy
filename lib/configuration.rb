@@ -13,5 +13,9 @@ module RSimpy
     def save
       @storage_service.save :user => @user
     end
+
+    def get
+      @storage_service.get[:user]
+    end
   end
 end

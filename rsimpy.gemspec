@@ -6,12 +6,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jamal Hansen"]
-  s.date = %q{2009-04-27}
-  s.default_executable = %q{optparse_example.rb}
+  s.date = %q{2009-04-28}
+  s.default_executable = %q{simp.rb}
   s.email = %q{jamal.hansen@gmail.com}
-  s.executables = ["optparse_example.rb"]
+  s.executables = ["simp.rb"]
   s.extra_rdoc_files = ["README.rdoc", "LICENSE"]
-  s.files = ["README.rdoc", "VERSION.yml", "bin/optparse_example.rb", "lib/link_querying_service.rb", "lib/parameters.rb", "lib/user.rb", "lib/link_posting_service.rb", "lib/configuration.rb", "lib/profile_storage_service.rb", "lib/rsimpy.rb", "lib/client.rb", "test/user_test.rb", "test/feature_helper.rb", "test/configuration_test.rb", "test/test_helper.rb", "test/fixtures", "test/fixtures/config", "test/fixtures/test", "test/link_querying_service_test.rb", "test/storage_service_test.rb", "test/link_posting_service_test.rb", "test/client_test.rb", "test/parameters_test.rb", "LICENSE"]
+  s.files = ["README.rdoc", "VERSION.yml", "bin/simp.rb", "lib/link_querying_service.rb", "lib/parameters.rb", "lib/user.rb", "lib/link_posting_service.rb", "lib/facade.rb", "lib/configuration.rb", "lib/profile_storage_service.rb", "lib/rsimpy.rb", "lib/client.rb", "test/user_test.rb", "test/feature_helper.rb", "test/configuration_test.rb", "test/test_helper.rb", "test/fixtures", "test/fixtures/config", "test/fixtures/test", "test/link_querying_service_test.rb", "test/storage_service_test.rb", "test/link_posting_service_test.rb", "test/client_test.rb", "test/parameters_test.rb", "LICENSE"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/rubyyot/rsimpy}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
