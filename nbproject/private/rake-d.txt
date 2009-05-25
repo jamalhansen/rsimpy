@@ -17,7 +17,7 @@ rerdoc=Force a rebuild of the RDOC files
 rubyforge\:release\:gem=Release the current gem version to RubyForge.
 rubyforge\:setup=Setup a rubyforge project for this gem
 test=Run tests
-user\:config=store simpy login in cleartext in your home directory for safekeeping.  Use rake user:config username=USERNAME password=PASSWORD
+user\:config=store simpy login in cleartext in your home directory for safekeeping.  Use rake user:config login=USERNAME pass=PASSWORD
 version=Displays the current version
 version\:bump\:major=Bump the gemspec by a major version.
 version\:bump\:minor=Bump the gemspec by a minor version.

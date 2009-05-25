@@ -6,8 +6,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'rsimpy'
 
 class Test::Unit::TestCase
-  def get_client
-    ClientStub.new.get_returns(1)
+  def get_client return_val=1
+    ClientStub.new.get_returns(return_val)
   end
 end
 

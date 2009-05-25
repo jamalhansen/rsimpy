@@ -8,36 +8,61 @@
 module RSimpy
   # The RSimpy::User class encapsulates user information.
   #
-  # You can instanciate it with a has containing login and password
+  # You can instanciate it with a hash containing login and password
   #
   # For example:
   #
-  #   user = RSimpy::User.new :user => 'example', :pass => '1234'
+  #   user = RSimpy::User.new 'login', 'password'
   #
   # Or you can use a block:
   #
-  #   user = RSimpy::User.new do
+  #   user = RSimpy::User.build do
   #     login :example
   #     pass :1234
   #   end
+  #
+  # When using build you have the ability to read the login and password from a config file.
   class User
-    attr_reader :username, :password
+    def initialize login, pass
+      @login = login
+      @pass = pass
+    end
 
-    def initialize params={}, &block
-      @username = params[:login]
-      @password = params[:pass]
+    def credentials
+      [@login, @pass]
+    end
 
-      if block
-         instance_eval(&block)
+    def self.login name
+      @login = name.to_s
+    end
+
+    def self.pass pass
+      @pass = pass.to_s
+    end    
+    
+    def self.build &block
+      class_eval(&block)
+      self.build_user 
+    end
+    
+    protected
+      def self.get_configuration
+        storage_service = RSimpy::ProfileStorageService.new
+        config = RSimpy::Configuration.new storage_service
+
+        if !config.stored?
+          raise RuntimeError "Please configure RSimpy or supply username and password when creating a new instance of Facade."
+        end
+
+        config.get
       end
-    end
 
-    def login name
-      @username = name.to_s
-    end
-
-    def pass pass
-      @password = pass.to_s
-    end
+      def self.build_user
+        if @login == nil || @pass == nil
+          get_configuration
+        else
+          new @login, @pass
+        end
+      end
   end
 end

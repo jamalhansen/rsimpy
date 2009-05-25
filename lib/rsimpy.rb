@@ -8,7 +8,7 @@ require 'link_posting_service'
 require 'parameters'  
 require 'configuration'
 require 'profile_storage_service'
-require 'facade'
+require 'links'
 
 module RSimpy
   

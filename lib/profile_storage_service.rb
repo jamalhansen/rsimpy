@@ -12,13 +12,14 @@ module RSimpy
       File.exists? @location
     end
 
-    def save data
+    def save user
       require 'khayyam'
 
       topic = Khayyam::Topic.new "rsimpy"
       topic.regarding "user" do |items|
-        items["username"] = data[:user].username
-        items["password"] = data[:user].password
+        login, pass = user.credentials
+        items["login"] = login
+        items["pass"] = pass
       end
 
       output = topic.export
@@ -32,15 +33,15 @@ module RSimpy
       file =  File.read(@location)
       data = {}
       require 'khayyam'
+      login, pass = nil
 
       topic = Khayyam::Topic.import file
       topic.regarding "user" do |items|
-        data[:login] = items["username"]
-        data[:pass] = items["password"]
+        login = items["login"]
+        pass = items["pass"]
       end
 
-      output = topic.export
-      return {:user => RSimpy::User.new(data)}
+      return RSimpy::User.new(login, pass)
     end
   end
 end 

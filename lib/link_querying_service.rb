@@ -4,7 +4,7 @@ module RSimpy
       @client = client
     end
 
-    def get                                                   
+    def get params=nil
       params = RSimpy::Parameters.new unless params
       @client.get build_link params
     end

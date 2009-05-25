@@ -5,22 +5,23 @@ module RSimpy
     format :xml
 
     def initialize(user)
-      self.class.basic_auth user.username, user.password
+      login, pass = user.credentials
+      self.class.basic_auth login, pass
     end
 
     def get uri
       begin
-	self.class.get uri
+        self.class.get uri
       rescue SocketError => error
-	raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
+        raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
       end
     end
 
     def post uri
       begin
-	self.class.post uri
+        self.class.post uri
       rescue SocketError => error
-	raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
+        raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
       end
     end
 

@@ -22,6 +22,4 @@ class LinkQueryingServiceCanDoABasicRequest < Test::Unit::TestCase
     link = RSimpy::LinkQueryingService.new(@client).build_link(params)
     assert(/src=rsimpy/ =~ link)
   end
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   end
+end
