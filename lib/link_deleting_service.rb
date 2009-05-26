@@ -1,5 +1,7 @@
+require 'required_field_missing_error'
+
 module RSimpy
-  class LinkPostingService
+  class LinkDeletingService
     attr_reader :success, :status_message, :status_code
 
     def initialize client
@@ -8,8 +10,8 @@ module RSimpy
 
     def execute params
       reset
-      response = @client.post build_link params
-
+      response = @client.delete build_link params
+      
       @success = ((response.code == 200) && response['status']['code'] == "0")
       @status_code = response['status']['code']
       @status_message = response['status']['message']
@@ -18,8 +20,8 @@ module RSimpy
     end
 
     def build_link params
-      params.add(:accessType, :public) unless params[:accessType] == :private
-      "/SaveLink.do?" << params.to_querystring
+      raise(RSimpy::RequiredFieldMissingError.new(:href)) unless (params.has_key?(:href) && params[:href])
+      "/DeleteLink.do?" << params.to_querystring
     end
 
     def reset

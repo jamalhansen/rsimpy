@@ -25,7 +25,15 @@ module RSimpy
       end
     end
 
+    def delete uri
+      begin
+        self.class.delete uri
+      rescue SocketError => error
+        raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
+      end
+    end
+
   end  
 
-  class ConnectionError < RuntimeError; end
+  class RSimpy::ConnectionError < RuntimeError; end
 end 

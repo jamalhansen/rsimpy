@@ -7,13 +7,13 @@ class ClientTest < Test::Unit::TestCase
     assert true
   end
 
-  def test_connect
+  def test_get
     FakeWeb.allow_net_connect = false
-    FakeWeb.register_uri("http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do", :string => "Authorized")
+    FakeWeb.register_uri("http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do", :string => get_response)
 
-    result = RSimpy::Client.new(RSimpy::User.new('USERNAME', 'PASSWORD')).get("/GetLinks.do")
+    response = RSimpy::Client.new(RSimpy::User.new('USERNAME', 'PASSWORD')).get("/GetLinks.do")
 
-    assert_equal 200, result.code
-    assert result != nil
+    assert response != nil
+    assert_equal Hash, response['links'].class
   end
 end

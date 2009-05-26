@@ -4,57 +4,8 @@ Feature: Post a link to a simpy account
   I want to post a link to my simpy account via rsimpy
  
   Scenario: Add link
-    Given a user of "rsimpy" with a password of "rsimpy"
-    When I use RSimpy
-    And the "link" is "http://www.example.com"
+    Given a user of "USERNAME" with a password of "PASSWORD"
+    When the "link" is "http://www.example.com"
     And the "title" is "example"
-    And I tell RSimpy to save
-    Then the link is added to Simpy
-    And the link is public
-
-  Scenario: Add private link
-    Given a user of "rsimpy" with a password of "rsimpy"
-    When I use RSimpy
-    And the "link" is "http://www.example.com"
-    And the "title" is "example"
-    And I request a private link
-    And I tell RSimpy to save
-    Then the link is added to Simpy
-    And the link is private
-
-  Scenario: Add a link with a nickname
-    Given a user of "rsimpy" with a password of "rsimpy"
-    When I use RSimpy
-    And the "link" is "http://www.example.com"
-    And the "title" is "example"
-    And the "urlNickname" is "cheeze"
-    And I request a private link
-    And I tell RSimpy to save
-    Then the link is added to Simpy
-    And the link is private
-    And the uri contains "urlNickname" equals "cheeze"
-
-  Scenario: Add a link with a note
-    Given a user of "rsimpy" with a password of "rsimpy"
-    When I use RSimpy
-    And the "link" is "http://www.example.com"
-    And the "title" is "example"
-    And the "note" is "ODoyle rules"
-    And I request a private link
-    And I tell RSimpy to save
-    Then the link is added to Simpy
-    And the link is private
-    And the uri contains "note" equals "ODoyle\+rules"
-
-  Scenario: Add a link with tags
-    Given a user of "rsimpy" with a password of "rsimpy"
-    When I use RSimpy
-    And the "link" is "http://www.example.com"
-    And the "title" is "example"
-    And the "tags" is "larry,curly,moe"
-    And I request a private link
-    And I tell RSimpy to save
-    Then the link is added to Simpy
-    And the link is private
-    And the uri contains "tags" equals "larry%2Ccurly%2Cmoe"
-    
+    Then I expect to post the url "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&link=http%3A%2F%2Fwww.example.com&src=rsimpy&title=example"
+    And the response is successful

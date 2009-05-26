@@ -2,7 +2,10 @@ require 'test_helper'
 
 class LinkQueryingServiceCanDoABasicRequest < Test::Unit::TestCase
   def setup
-    @client = get_client
+    FakeWeb.clean_registry
+    FakeWeb.allow_net_connect = false
+
+    @client = RSimpy::Client.new(RSimpy::User.new("USERNAME","PASSWORD"))
     @action = "/GetLinks.do?"
   end
 
@@ -13,8 +16,11 @@ class LinkQueryingServiceCanDoABasicRequest < Test::Unit::TestCase
   end   
 
   def test_basic_get
+    FakeWeb.register_uri(:get, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do?src=rsimpy", :string => get_response)
+
     service = RSimpy::LinkQueryingService.new(@client)
-    assert_equal 1, service.get
+    response = service.execute RSimpy::Parameters.new
+    assert service.success
   end
 
   def test_src_is_set

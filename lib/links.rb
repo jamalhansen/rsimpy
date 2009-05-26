@@ -1,5 +1,10 @@
+require 'link_querying_service'
+require 'link_deleting_service'
+require 'link_posting_service'  
+
 module RSimpy
   class Links
+    attr_reader :success, :status_code, :status_message
 
     def initialize(login=nil, pass=nil)
       if (login && pass)
@@ -15,83 +20,84 @@ module RSimpy
     def save &block
       @params = RSimpy::Parameters.new
       instance_eval(&block)
-      post @params
+      execute RSimpy::LinkPostingService.new(RSimpy::Client.new(@user)), @params
     end
 
     def get &block
       @params = RSimpy::Parameters.new
       instance_eval(&block)
-      query @params
+      execute RSimpy::LinkQueryingService.new(RSimpy::Client.new(@user)), @params
     end
 
-    protected
-      def title title
-        @params.add :title, title
+    def delete &block
+      @params = RSimpy::Parameters.new
+      instance_eval(&block)
+      execute RSimpy::LinkDeletingService.new(RSimpy::Client.new(@user)), @params
+    end
+
+    def title title
+      @params.add :title, title
+    end
+
+    def href uri
+      @params.add :href, uri
+    end
+
+    def tags tags
+      @params.add :tags, tags
+    end
+
+    def access_type type
+      @params.add :accessType, type
+    end
+
+    def url_nickname nickname
+      @params.add :urlNickname, nickname
+    end
+
+    def note note
+      @params.add :note, note
+    end
+
+    def q query
+      @params.add :q, query
+    end
+
+    def limit limit
+      @params.add :limit, limit
+    end
+
+    def date date, to=nil
+      if to
+        @params.add :afterDate, format_date(date)
+        @params.add :beforeDate, format_date(to)
+      else
+        @params.add :date, format_date(date)
       end
 
-      def href uri
-        @params.add :href, format_uri(uri)
+    end
+
+    def format_date date
+      date.strftime("%Y-%m-%d")
+    end
+
+    def execute service, params
+      set_codes
+      response = service.execute params
+      set_codes service
+      response
+    end
+
+    def set_codes service=nil
+      if service
+        @success = service.success
+        @status_code = service.status_code
+        @status_message = service.status_message
+      else
+        @success = false
+        @status_code = nil
+        @status_message =nil
       end
-
-      def tags tags
-        @params.add :tags,  build_tag_string(tags)
-      end
-
-      def access_type type
-        @params.add :accessType, 1 if type == :private
-      end
-
-      def url_nickname nickname
-        @params.add :urlNickname, nickname
-      end
-
-      def note note
-        @params.add :note, note
-      end
-
-      def q query
-        @params.add :q, query
-      end
-
-      def limit limit
-        @params.add :limit, limit
-      end
-
-      def date date, to=nil
-        if to
-          @params.add :afterDate, format_date(date)
-          @params.add :beforeDate, format_date(to)
-        else
-          @params.add :date, format_date(date)
-        end
-        
-      end
-
-      def format_date date
-        date.strftime("%Y-%m-%d")
-      end
-
-      def format_uri uri
-        uri = 'http://' + uri unless uri[0..6] == 'http://'
-        uri
-      end
-
-      def post params
-        service = RSimpy::LinkPostingService.new(RSimpy::Client.new(@user))
-
-        # Post
-        service.post params
-      end
-
-      def query params
-        service = RSimpy::LinkQueryingService.new(RSimpy::Client.new(@user))
-
-        # Post
-        service.get params
-      end
-
-      def build_tag_string tags
-        tags.collect{|a| a + ", "}.to_s.chop.chop
-      end
+    end
   end
 end
