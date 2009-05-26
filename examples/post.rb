@@ -9,6 +9,6 @@ service = RSimpy::LinkPostingService.new(client)
 params = RSimpy::Parameters.new :href => "http://www.example.com", :title => "Example Site", :tags => 'search'
 
 # Post
-service.execute params
+response = service.execute params
 
 

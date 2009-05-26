@@ -12,7 +12,7 @@ Given /^a user of "([^\"]*)" with a password of "([^\"]*)"$/ do |login, pass|
 end
 
 When /^the "([^\"]*)" is "([^\"]*)"$/ do |key, value|
-  @p[key] = value
+  @p[key.to_sym] = convert_symbols(value)
 end
 
 Then /^I expect to post the url "([^\"]*)"$/ do |url|
