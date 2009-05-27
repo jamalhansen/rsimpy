@@ -1,12 +1,14 @@
 require 'httparty'    
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'client'  
+require 'client'
 require 'user'          
 require 'parameters'  
 require 'configuration'
 require 'profile_storage_service'
 require 'links'
+require 'tags'
+require 'posting_service'
 
 module RSimpy
   

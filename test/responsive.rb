@@ -51,4 +51,40 @@ module Responsive
   <message>Link deleted successfully.</message>
 </status>'
   end
+
+  def tag_splitting_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<status>
+  <code>0</code>
+  <message>Tag split successfully.</message>
+</status>'
+  end
+
+  def tag_merging_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<status>
+  <code>0</code>
+  <message>Tags merged successfully.</message>
+</status>'
+  end
+
+  def tag_renaming_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<status>
+  <code>0</code>
+  <message>Tag renamed successfully.</message>
+</status>'
+  end
+
+  def tag_removing_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<status>
+  <code>0</code>
+  <message>Tag removed successfully.</message>
+</status>'
+  end
 end

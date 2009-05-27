@@ -1,6 +1,4 @@
 require 'link_querying_service'
-require 'link_deleting_service'
-require 'link_posting_service'  
 
 module RSimpy
   class Links
@@ -20,7 +18,8 @@ module RSimpy
     def save &block
       @params = RSimpy::Parameters.new
       instance_eval(&block)
-      execute RSimpy::LinkPostingService.new(RSimpy::Client.new(@user)), @params
+      @params.add(:accessType, :public) unless @params.has_key? :accessType
+      execute RSimpy::PostingService.new(RSimpy::SAVE_LINK, RSimpy::Client.new(@user)), @params
     end
 
     def get &block
@@ -32,7 +31,7 @@ module RSimpy
     def delete &block
       @params = RSimpy::Parameters.new
       instance_eval(&block)
-      execute RSimpy::LinkDeletingService.new(RSimpy::Client.new(@user)), @params
+      execute RSimpy::PostingService.new(RSimpy::DELETE_LINK, RSimpy::Client.new(@user)), @params
     end
 
     def title title

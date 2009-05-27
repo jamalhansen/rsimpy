@@ -15,8 +15,8 @@ class LinkPostingServiceCanDoABasicPost < Test::Unit::TestCase
   def test_basic_post
     FakeWeb.register_uri(:post, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&href=http%3A%2F%2Fexample.com&src=rsimpy&title=Example", :string => post_response)
 
-    params = RSimpy::Parameters.new :href => "http://example.com", :title => "Example"
-    service = RSimpy::LinkPostingService.new(@client)
+    params = RSimpy::Parameters.new :href => "http://example.com", :title => "Example", :accessType => :public
+    service = RSimpy::PostingService.new(RSimpy::SAVE_LINK, @client)
     response = service.execute params
 
     assert service.success
@@ -35,8 +35,8 @@ class LinkPostingServiceResponses < Test::Unit::TestCase
   def test_successful_response
     FakeWeb.register_uri(:post, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&href=http%3A%2F%2Fexample.com&src=rsimpy&title=foo", :string => delete_response)
 
-    service = RSimpy::LinkPostingService.new(@client)
-    response = service.execute RSimpy::Parameters.new :href => "http://example.com", :title => "foo"
+    service = RSimpy::PostingService.new(RSimpy::SAVE_LINK, @client)
+    response = service.execute RSimpy::Parameters.new :href => "http://example.com", :title => "foo", :accessType => :public
 
     assert service.success
     assert_equal "0", service.status_code

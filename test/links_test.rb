@@ -74,7 +74,7 @@ class LinksGetTest < Test::Unit::TestCase
   end
 
   def test_getting_links_with_date_range
-    FakeWeb.register_uri(:get, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do?afterDate=2009-10-01&src=rsimpy&limit=12&beforeDate=2009-10-10&q=waffles", :string => get_response)
+    FakeWeb.register_uri(:get, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do?afterDate=2009-10-01&beforeDate=2009-10-10&limit=12&q=waffles&src=rsimpy", :string => get_response)
 
     links = RSimpy::Links.new 'USERNAME', 'PASSWORD'
     response = links.get do
@@ -95,7 +95,8 @@ class LinksDeleteTest < Test::Unit::TestCase
   end
 
   def test_deleting_a_link
-    FakeWeb.register_uri(:delete, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/DeleteLink.do?href=http%3A%2F%2Fwww.example.com&src=rsimpy", :string => delete_response)
+    # Simpy uses post for deletion
+    FakeWeb.register_uri(:post, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/DeleteLink.do?href=http%3A%2F%2Fwww.example.com&src=rsimpy", :string => delete_response)
 
     links = RSimpy::Links.new 'USERNAME', 'PASSWORD'
     response = links.delete do

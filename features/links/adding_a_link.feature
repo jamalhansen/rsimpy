@@ -7,6 +7,7 @@ Feature: Post a link to a simpy account
     Given a user of "USERNAME" with a password of "PASSWORD"
     When the "link" is "http://www.example.com"
     And the "title" is "example"
+    And the "accessType" is ":public"
     Then I expect to post the url "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&link=http%3A%2F%2Fwww.example.com&src=rsimpy&title=example"
     And the response is successful
 
@@ -23,6 +24,7 @@ Feature: Post a link to a simpy account
     When the "link" is "http://www.example.com"
     And the "title" is "example"
     And the "note" is "Examples are good"
+    And the "accessType" is ":public"
     Then I expect to post the url "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&link=http%3A%2F%2Fwww.example.com&note=Examples+are+good&src=rsimpy&title=example"
     And the response is successful
 
@@ -31,6 +33,7 @@ Feature: Post a link to a simpy account
     When the "link" is "http://www.example.com"
     And the "title" is "example"
     And the "tags" is "foo, bar, cheese"
+    And the "accessType" is ":public"
     Then I expect to post the url "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&link=http%3A%2F%2Fwww.example.com&src=rsimpy&tags=foo%2C+bar%2C+cheese&title=example"
     And the response is successful
 
@@ -39,5 +42,6 @@ Feature: Post a link to a simpy account
     When the "link" is "http://www.example.com"
     And the "title" is "example"
     And the "nickname" is "sample"
+    And the "accessType" is ":public"
     Then I expect to post the url "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/SaveLink.do?accessType=1&link=http%3A%2F%2Fwww.example.com&nickname=sample&src=rsimpy&title=example"
     And the response is successful

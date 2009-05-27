@@ -1,5 +1,4 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'test'))
-require 'feature_helper'
 require 'fakeweb'
 include Responsive
 
@@ -12,13 +11,13 @@ Given /^a user of "([^\"]*)" with a password of "([^\"]*)"$/ do |login, pass|
 end
 
 When /^the "([^\"]*)" is "([^\"]*)"$/ do |key, value|
-  @p[key.to_sym] = convert_symbols(value)
+  @p[key.to_sym] = convert_symbols_and_dates(key, value)
 end
 
 Then /^I expect to post the url "([^\"]*)"$/ do |url|
   FakeWeb.register_uri(:post, url, :string => post_response)
 
-  @service = RSimpy::LinkPostingService.new(@client)
+  @service = RSimpy::PostingService.new(RSimpy::SAVE_LINK, @client)
   @response = @service.execute @p
 end
 

@@ -1,3 +1,5 @@
+require 'errors/connection_error'
+
 module RSimpy
   class Client                                           
     include HTTParty                                       
@@ -7,6 +9,17 @@ module RSimpy
     def initialize(user)
       login, pass = user.credentials
       self.class.basic_auth login, pass
+    end
+
+    def execute method, uri
+      case method
+      when :get
+        get uri
+      when :post
+        post uri
+      when :delete
+        delete uri
+      end
     end
 
     def get uri
@@ -34,6 +47,4 @@ module RSimpy
     end
 
   end  
-
-  class RSimpy::ConnectionError < RuntimeError; end
 end 
