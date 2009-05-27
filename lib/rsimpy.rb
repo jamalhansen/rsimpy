@@ -6,9 +6,11 @@ require 'user'
 require 'parameters'  
 require 'configuration'
 require 'profile_storage_service'
+require 'posting_service'
+require 'querying_service'
 require 'links'
 require 'tags'
-require 'posting_service'
+
 
 module RSimpy
   

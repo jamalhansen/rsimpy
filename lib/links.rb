@@ -1,4 +1,5 @@
-require 'link_querying_service'
+require 'posting_service'
+require 'querying_service'
 
 module RSimpy
   class Links
@@ -25,7 +26,7 @@ module RSimpy
     def get &block
       @params = RSimpy::Parameters.new
       instance_eval(&block)
-      execute RSimpy::LinkQueryingService.new(RSimpy::Client.new(@user)), @params
+      execute RSimpy::QueryingService.new(RSimpy::GET_LINKS, RSimpy::Client.new(@user)), @params
     end
 
     def delete &block

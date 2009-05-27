@@ -1,10 +1,14 @@
 require 'base_service'
 
 module RSimpy
-  class LinkQueryingService < RSimpy::BaseService
+  GET_TAGS = "GetTags"
+  GET_LINKS = "GetLinks"
 
-    def initialize client
+  class QueryingService < RSimpy::BaseService
+
+    def initialize command, client
       @client = client
+      @command = command
     end
     
     def execute params
@@ -20,7 +24,7 @@ module RSimpy
 
     def build_link params
       params.add(:src, 'rsimpy')
-      "/GetLinks.do?" << params.to_querystring
+      "/#{@command}.do?" << params.to_querystring
     end
   end
 end

@@ -34,3 +34,18 @@ Then /^I expect to remove the tag with the url "([^\"]*)"$/ do |url|
   @response = @service.execute @p
 end
 
+When /^I query the user's tags$/ do
+
+end
+
+Then /^the tags are returned$/ do
+  assert @response.has_key? "tags"
+end
+
+Then /^I expect to query tags from the url "([^\"]*)"$/ do |url|
+  FakeWeb.register_uri(:get, url, :string => tag_querying_response)
+
+  @service = RSimpy::QueryingService.new(RSimpy::GET_TAGS, @client)
+  @response = @service.execute @p
+end
+

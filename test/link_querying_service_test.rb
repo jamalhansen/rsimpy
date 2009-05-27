@@ -11,21 +11,21 @@ class LinkQueryingServiceCanDoABasicRequest < Test::Unit::TestCase
 
   def test_build_basic_link
     params = RSimpy::Parameters.new
-    link = RSimpy::LinkQueryingService.new(@client).build_link(params)
+    link = RSimpy::QueryingService.new(RSimpy::GET_LINKS, @client).build_link(params)
     assert(/#{@action}/ =~ link)
   end   
 
   def test_basic_get
     FakeWeb.register_uri(:get, "http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do?src=rsimpy", :string => get_response)
 
-    service = RSimpy::LinkQueryingService.new(@client)
+    service = RSimpy::QueryingService.new(RSimpy::GET_LINKS, @client)
     response = service.execute RSimpy::Parameters.new
     assert service.success
   end
 
   def test_src_is_set
     params = RSimpy::Parameters.new
-    link = RSimpy::LinkQueryingService.new(@client).build_link(params)
+    link = RSimpy::QueryingService.new(RSimpy::GET_LINKS, @client).build_link(params)
     assert(/src=rsimpy/ =~ link)
   end
 end

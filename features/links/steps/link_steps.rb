@@ -28,7 +28,7 @@ end
 When /^I expect to query the url "([^\"]*)"$/ do |url|
   FakeWeb.register_uri(:get, url, :string => get_response)
 
-  @service = RSimpy::LinkQueryingService.new(@client)
+  @service = RSimpy::QueryingService.new(RSimpy::GET_LINKS, @client)
   @response = @service.execute @p
 end
 

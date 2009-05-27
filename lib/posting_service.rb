@@ -1,3 +1,4 @@
+require 'base_service'
 
 module RSimpy
   MERGE_TAGS = 'MergeTags'

@@ -87,4 +87,18 @@ module Responsive
   <message>Tag removed successfully.</message>
 </status>'
   end
+
+  def tag_querying_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<tags user="user1">
+  <tag name="tags" count="22"/>
+  <tag name="folksonomy" count="15"/>
+  <tag name="taxonomies" count="10"/>
+  <tag name="labels" count="7"/>
+  <tag name="tag1" count="5"/>
+  <tag name="tag2" count="3"/>
+  <tag name="topics" count="2"/>
+</tags>'
+  end
 end
