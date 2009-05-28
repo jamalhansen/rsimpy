@@ -9,8 +9,6 @@ require 'profile_storage_service'
 require 'posting_service'
 require 'querying_service'
 require 'links'
-require 'tags'
-
 
 module RSimpy
   

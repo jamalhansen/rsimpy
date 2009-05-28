@@ -7,6 +7,8 @@ module RSimpy
   REMOVE_TAG = 'RemoveTag'
   DELETE_LINK = 'DeleteLink'
   SAVE_LINK = 'SaveLink'
+  DELETE_NOTE = 'DeleteNote'
+  SAVE_NOTE = 'SaveNote'
 
   class PostingService < RSimpy::BaseService
     def initialize command, client

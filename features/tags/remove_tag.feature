@@ -6,6 +6,6 @@ Feature: Remove tag from my simpy account
   Scenario: Removing a tag
     Given a user of "USERNAME" with a password of "PASSWORD"
     When I remove a user's tags
-    When the "tag" is "mutable"
+    And the "tag" is "mutable"
     Then I expect to remove the tag with the url "http://USERNAME:PASSWORD@www.simpy.com/simpy/api/rest/RemoveTag.do?tag=mutable&src=rsimpy"
     Then the response is successful

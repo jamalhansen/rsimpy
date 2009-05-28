@@ -101,4 +101,54 @@ module Responsive
   <tag name="topics" count="2"/>
 </tags>'
   end
+
+  def note_removing_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<status>
+  <code>0</code>
+  <message>Note deleted successfully.</message>
+</status>'
+  end
+
+  def note_saving_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<status>
+  <code>0</code>
+  <message>Note saved successfully.</message>
+</status>'
+  end
+
+  def note_querying_response
+    '<?xml version="1.0" encoding="UTF-8"?>
+
+<notes>
+  <note accessType="private">
+    <uri>http://www.simpy.com/simpy/NoteDetails.do?noteId=666</uri>
+    <id>666</id>
+    <modDate>date here</modDate>
+    <addDate>date here</addDate>
+    <title>title here</title>
+    <tags>
+      <tag>goober</tag>
+      <tag>New York</tag>
+    </tags>
+    <description>I like ice-cream</description>
+  </note>
+
+  <note accessType="private">
+    <uri>http://www.simpy.com/simpy/NoteDetails.do?noteId=314159265</uri>
+    <modDate>date here</modDate>
+    <addDate>date here</addDate>
+    <title>title here</title>
+    <nickname>nickname here</nickname>
+    <tags>
+      <tag>goober</tag>
+      <tag>New York</tag>
+    </tags>
+    <description>tea with cookies... mmmm</description>
+  </note>
+</notes>'
+  end
 end

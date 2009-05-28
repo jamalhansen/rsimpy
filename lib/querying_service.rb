@@ -3,6 +3,7 @@ require 'base_service'
 module RSimpy
   GET_TAGS = "GetTags"
   GET_LINKS = "GetLinks"
+  GET_NOTES = "GetNotes"
 
   class QueryingService < RSimpy::BaseService
 
