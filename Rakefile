@@ -11,9 +11,9 @@ begin
     gem.authors = ["Jamal Hansen"]
     gem.add_dependency('httparty', '>= 0.4.2')
     gem.add_dependency('khayyam', '>= 0.0.1')
-    gem.add_dependency('khayyam', '>= 0.0.1')
-    gem.add_development_dependency 'jabber4r', '>= 1.2.0'
-
+    gem.add_development_dependency 'cucumber'
+    gem.add_development_dependency 'technicalpickles-jeweler'
+    gem.rubyforge_project = "rsimpy"
 
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -51,7 +51,7 @@ begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |test|
     test.libs << 'test'
-    test.pattern = 'test/**/*_test.rb'
+    test.pattern = 'test/*_test.rb'
     test.verbose = true
   end
 rescue LoadError

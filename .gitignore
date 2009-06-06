@@ -3,3 +3,4 @@ log*
 *[~#]
 optparse_example.rb
 pkg/*
+coverage*

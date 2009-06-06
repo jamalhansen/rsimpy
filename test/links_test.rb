@@ -1,3 +1,4 @@
+require 'test_helper'
 require 'fakeweb'
 
 class LinksSaveTest < Test::Unit::TestCase
