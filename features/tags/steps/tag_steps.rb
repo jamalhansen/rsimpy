@@ -1,5 +1,3 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'test'))
-require 'fakeweb'
 include Responsive
 
 When /^I ([^\"]*) a user's tags$/ do |verb|

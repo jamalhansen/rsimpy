@@ -11,7 +11,8 @@ begin
     gem.authors = ["Jamal Hansen"]
     gem.add_dependency('httparty', '>= 0.4.2')
     gem.add_dependency('khayyam', '>= 0.0.1')
-    gem.add_development_dependency 'cucumber'
+    gem.add_development_dependency('cucumber', '>= 0.3.11')
+    gem.add_development_dependency('fakeweb', '>= 1.2.3')
     gem.add_development_dependency 'technicalpickles-jeweler'
     gem.rubyforge_project = "rsimpy"
 
@@ -28,7 +29,7 @@ begin
   require 'cucumber/rake/task'
 
   Cucumber::Rake::Task.new(:features) do |t|
-    t.cucumber_opts = "--format pretty" 
+    t.cucumber_opts = "--require features/support/env.rb --require features/links/steps --require features/tags/steps --require features/notes/steps --format pretty"
   end
 
 rescue LoadError

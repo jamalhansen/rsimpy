@@ -1,3 +1,5 @@
+include Responsive
+
 When /^I ([^\"]*) a user's note$/ do |verb|
 
 end

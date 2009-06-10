@@ -8,8 +8,7 @@ Copyright (c) 2009 Jamal Hansen. See LICENSE for details.
 
 == Todo
 
-Currently most of my efforts have been centered around the post portion of the API so that I can put bookmarks there.
-While basic link queries are supported as well, this and the rest of the API has been primarily neglected
+Watchlists are currently not supported
 
 == Examples
 

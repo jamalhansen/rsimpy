@@ -1,5 +1,3 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'test'))
-require 'fakeweb'
 include Responsive
 
 Given /^a user of "([^\"]*)" with a password of "([^\"]*)"$/ do |login, pass|
