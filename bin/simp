@@ -57,8 +57,12 @@
   begin
     require 'rsimpy'
 
-    f = RSimpy::Facade.new
-    f.post options.url, options.title, options.tags
-  rescue
+    links = RSimpy::Links.new
+
+    links.save RSimpy::Parameters.new(:href => options.url, :title => options.title, :tags => options.tags)
+
+  rescue RuntimeError => e
+    puts "An error occured."
     pp options
+    raise e
   end

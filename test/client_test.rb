@@ -1,5 +1,6 @@
 require 'test_helper'
 require 'fakeweb'
+require 'errors/user_not_provided_error'
 
 
 class ClientTest < Test::Unit::TestCase
@@ -15,5 +16,29 @@ class ClientTest < Test::Unit::TestCase
 
     assert response != nil
     assert_equal Hash, response['links'].class
+  end
+
+  should "throw user not provided if user !valid?" do
+    begin
+      client = RSimpy::Client.new(InvalidUser.new)
+      flunk "should have thrown UserNotProvidedError"
+    rescue RSimpy::UserNotProvidedError => e
+      assert_equal RSimpy::UserNotProvidedError, e.class
+    end
+  end
+
+  should "throw user not provided if user nil" do
+    begin
+      client = RSimpy::Client.new(nil)
+      flunk "should have thrown UserNotProvidedError"
+    rescue RSimpy::UserNotProvidedError => e
+      assert_equal RSimpy::UserNotProvidedError, e.class
+    end
+  end
+end
+
+class InvalidUser
+  def valid?
+    false
   end
 end

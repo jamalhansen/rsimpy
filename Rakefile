@@ -13,6 +13,7 @@ begin
     gem.add_dependency('khayyam', '>= 0.0.1')
     gem.add_development_dependency('cucumber', '>= 0.3.11')
     gem.add_development_dependency('fakeweb', '>= 1.2.3')
+    gem.add_development_dependency('shoulda')
     gem.add_development_dependency 'technicalpickles-jeweler'
     gem.rubyforge_project = "rsimpy"
 

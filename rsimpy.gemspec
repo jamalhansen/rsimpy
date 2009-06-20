@@ -22,8 +22,6 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION.yml",
      "bin/simp",
-     "examples/post.rb",
-     "examples/post_using_links.rb",
      "features/links/adding_a_link.feature",
      "features/links/querying_links.feature",
      "features/links/steps/link_steps.rb",
@@ -83,8 +81,10 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/links_test.rb",
      "test/user_test.rb",
+     "test/r_simpy_test.rb",
      "test/configuration_test.rb",
      "test/storage_service_mock.rb",
+     "test/user_not_provided_error_test.rb",
      "test/storage_builder.rb",
      "test/test_helper.rb",
      "test/posting_service_test.rb",
@@ -94,9 +94,7 @@ Gem::Specification.new do |s|
      "test/required_field_missing_error_test.rb",
      "test/responsive.rb",
      "test/client_test.rb",
-     "test/parameters_test.rb",
-     "examples/post_using_links.rb",
-     "examples/post.rb"
+     "test/parameters_test.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -108,12 +106,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<khayyam>, [">= 0.0.1"])
       s.add_development_dependency(%q<cucumber>, [">= 0.3.11"])
       s.add_development_dependency(%q<fakeweb>, [">= 1.2.3"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<technicalpickles-jeweler>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, [">= 0.4.2"])
       s.add_dependency(%q<khayyam>, [">= 0.0.1"])
       s.add_dependency(%q<cucumber>, [">= 0.3.11"])
       s.add_dependency(%q<fakeweb>, [">= 1.2.3"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<technicalpickles-jeweler>, [">= 0"])
     end
   else
@@ -121,6 +121,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<khayyam>, [">= 0.0.1"])
     s.add_dependency(%q<cucumber>, [">= 0.3.11"])
     s.add_dependency(%q<fakeweb>, [">= 1.2.3"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<technicalpickles-jeweler>, [">= 0"])
   end
 end

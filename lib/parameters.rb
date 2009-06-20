@@ -70,5 +70,51 @@ module RSimpy
     def add key, value
       @params[key] = value
     end
+
+    def title title
+      add :title, title
+    end
+
+    def href uri
+      add :href, uri
+    end
+
+    def tags tags
+      add :tags, tags
+    end
+
+    def access_type type
+      add :accessType, type
+    end
+
+    def url_nickname nickname
+      add :urlNickname, nickname
+    end
+
+    def note note
+      add :note, note
+    end
+
+    def q query
+      add :q, query
+    end
+
+    def limit limit
+      add :limit, limit
+    end
+
+    def date date, to=nil
+      if to
+        add :afterDate, format_date(date)
+        add :beforeDate, format_date(to)
+      else
+        add :date, format_date(date)
+      end
+
+    end
+
+    def format_date date
+      date.strftime("%Y-%m-%d")
+    end
   end
 end

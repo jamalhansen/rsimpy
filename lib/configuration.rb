@@ -15,7 +15,7 @@ module RSimpy
     end
 
     def get
-      @storage_service.get[:user]
+      @storage_service.get
     end
   end
 end

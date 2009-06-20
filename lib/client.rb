@@ -12,6 +12,7 @@ module RSimpy
     format :xml
 
     def initialize(user)
+      raise RSimpy::UserNotProvidedError unless user && user.valid?
       login, pass = user.credentials
       self.class.basic_auth login, pass
     end
