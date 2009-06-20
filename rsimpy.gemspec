@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rsimpy}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jamal Hansen"]
@@ -65,6 +65,7 @@ Gem::Specification.new do |s|
      "test/parameters_test.rb",
      "test/posting_service_test.rb",
      "test/querying_service_test.rb",
+     "test/required_field_missing_error_test.rb",
      "test/responsive.rb",
      "test/storage_builder.rb",
      "test/storage_service_mock.rb",
