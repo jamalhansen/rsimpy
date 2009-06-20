@@ -56,7 +56,11 @@ module RSimpy
     end
 
     def build_tag_string tags
-      tags.collect{|a| a + ", "}.to_s.chop.chop
+      if tags.class == Array
+        tags.collect{|a| a + ", "}.to_s.chop.chop
+      else
+        tags
+      end
     end
 
     def format_access_type type

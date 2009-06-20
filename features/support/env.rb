@@ -12,9 +12,9 @@ require 'rsimpy'
 
 def convert_symbols_and_dates key, value
   if /[Dd]ate/ =~ key
-    return Date.parse(value)
+    return Date.strptime(value, '%m/%d/%Y')
   else
-    return value unless value[0] == 58
+    return value unless value[0] == ":"[0]
 
     len = value.length
     value[1..len].to_sym
