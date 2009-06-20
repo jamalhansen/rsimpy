@@ -1,5 +1,10 @@
 require 'errors/connection_error'
 
+require 'rubygems'
+gem 'httparty', '>= 0.4.2'
+require 'httparty'
+
+
 module RSimpy
   class Client                                           
     include HTTParty                                       
@@ -17,8 +22,6 @@ module RSimpy
         get uri
       when :post
         post uri
-      when :delete
-        delete uri
       end
     end
 
@@ -37,14 +40,5 @@ module RSimpy
         raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
       end
     end
-
-    def delete uri
-      begin
-        self.class.delete uri
-      rescue SocketError => error
-        raise ConnectionError.new "Error connecting to Simpy: #{error.message}"
-      end
-    end
-
   end  
 end 

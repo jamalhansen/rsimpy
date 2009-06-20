@@ -1,4 +1,4 @@
-module RSimpy
+ module RSimpy
   class BaseService
     attr_reader :success, :status_message, :status_code
 

@@ -83,7 +83,7 @@ namespace :user do
 
   desc 'store simpy login in cleartext in your home directory for safekeeping.  Use rake user:config login=USERNAME pass=PASSWORD'
   task :config do
-    require 'rsimpy'
+    require 'lib/rsimpy'
     
     user = RSimpy::User.new ENV['login'], ENV['pass']
     config = RSimpy::Configuration.new RSimpy::ProfileStorageService.new

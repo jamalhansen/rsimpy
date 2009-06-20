@@ -39,11 +39,11 @@ module RSimpy
 
     def format key, value
       case key
-      when :href:
+      when(:href)
         format_uri(value)
-      when :tags
+      when(:tags)
         build_tag_string value
-      when :accessType
+      when(:accessType)
         format_access_type value
       else
         value
