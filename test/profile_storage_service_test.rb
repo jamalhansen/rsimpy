@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProfileStorageServiceTest < Test::Unit::TestCase
   def setup
-    @fixture_path = File.join ['test', 'fixtures', 'config']
+    @fixture_path = File.join ['test', 'fixtures', 'user_pass']
     @service = RSimpy::ProfileStorageService.new  @fixture_path
   end
 

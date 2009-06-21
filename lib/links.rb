@@ -18,7 +18,7 @@ module RSimpy
       config = RSimpy::Configuration.new storage_service
 
       if !config.stored?
-        raise UserNotProvidedError "Please configure RSimpy or supply username and password when creating a new instance of Facade."
+        raise UserNotProvidedError "Please configure RSimpy or supply username and password"
       end
 
       config.get

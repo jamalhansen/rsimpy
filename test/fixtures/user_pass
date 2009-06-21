@@ -1,5 +1,5 @@
 topic: rsimpy
 categories:
   user:
-    username: USERNAME
-    password: PASSWORD
+    login: USERNAME
+    pass: PASSWORD
