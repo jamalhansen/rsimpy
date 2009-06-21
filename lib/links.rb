@@ -3,6 +3,7 @@ require 'querying_service'
 
 module RSimpy
   class Links
+    #TODO move this functionality to RSimpy module
     attr_reader :success, :status_code, :status_message
 
     def initialize(login=nil, pass=nil)
