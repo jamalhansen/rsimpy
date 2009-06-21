@@ -3,17 +3,17 @@ require 'storage_builder'
 require 'storage_service_mock'
 
 class ConfigurationTest < Test::Unit::TestCase
-  def test_stored_configuration_is_easily_detectable
+  should "detect stored configuration" do
     config = RSimpy::Configuration.new StorageBuilder.new.with_stored_configuration('foo', 'bar').build
     assert config.stored?
   end
 
-  def test_missing_configuration_is_easily_detectable
+  should "detect missing configuration" do
     config = RSimpy::Configuration.new StorageBuilder.new.without_stored_configuration.build
     assert !config.stored?
   end
 
-  def test_can_save_user_info
+  should "save user info" do
     storage_service = StorageBuilder.new.without_stored_configuration.build
     config = RSimpy::Configuration.new storage_service
     config.user = RSimpy::User.new('foo', 'bar')

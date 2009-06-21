@@ -22,31 +22,41 @@ module RSimpy
     result
   end
 
-  def build_user param_hash
-    login = param_hash[:login] if param_hash.has_key? :login
-    pass = param_hash[:pass] if param_hash.has_key? :pass
+  def delete_link param_hash={}
+    user = build_user param_hash
 
-    if login && pass
-      return RSimpy::User.new login, pass
+    client = RSimpy::Client.new(user)
+    service = RSimpy::PostingService.new RSimpy::DELETE_LINK, client
+
+    service.execute param_hash[:params]
+  end
+
+  private
+    def build_user param_hash
+      login = param_hash[:login] if param_hash.has_key? :login
+      pass = param_hash[:pass] if param_hash.has_key? :pass
+
+      if login && pass
+        return RSimpy::User.new login, pass
+      end
+
+      build_user_from_configuration param_hash
     end
 
-    build_user_from_configuration param_hash
-  end
-
-  def build_params param_hash
-    param_hash[:params] || RSimpy::Parameters.new
-  end
-
-  def build_user_from_configuration param_hash
-    storage_service = RSimpy::ProfileStorageService.new(param_hash[:config_file])
-    config = RSimpy::Configuration.new storage_service
-
-    if !config.stored?
-      raise RSimpy::UserNotProvidedError "Please configure RSimpy or supply username and password"
+    def build_params param_hash
+      param_hash[:params] || RSimpy::Parameters.new
     end
 
-    config.get
-  end
+    def build_user_from_configuration param_hash
+      storage_service = RSimpy::ProfileStorageService.new(param_hash[:config_file])
+      config = RSimpy::Configuration.new storage_service
+
+      if !config.stored?
+        raise RSimpy::UserNotProvidedError "Please configure RSimpy or supply username and password"
+      end
+
+      config.get
+    end
 end                      
 
 

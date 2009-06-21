@@ -1,23 +1,26 @@
 require 'test_helper'
 
 class ProfileStorageServiceTest < Test::Unit::TestCase
-  def setup
-    @fixture_path = File.join ['test', 'fixtures', 'user_pass']
-    @service = RSimpy::ProfileStorageService.new  @fixture_path
+  context "basic operations" do
+    setup do
+      @fixture_path = File.join ['test', 'fixtures', 'user_pass']
+      @service = RSimpy::ProfileStorageService.new  @fixture_path
+    end
+
+    should "have a default location of ~/.rsimpy" do
+      path = File.expand_path(File.join(['~', '.rsimpy']))
+      assert_equal path, @service.default_location
+    end
+
+    should "be stored? if config file exists" do
+      assert @service.stored?
+      assert !RSimpy::ProfileStorageService.new('wubba').stored?
+    end
   end
 
-  def test_default_location_is_in_home
-    path = File.expand_path(File.join(['~', '.rsimpy']))
-    assert_equal path, @service.default_location 
-  end
-
-  def test_stored_returns_true_if_config_file_exists
-    assert @service.stored?
-    assert !RSimpy::ProfileStorageService.new('wubba').stored?
-  end
-
-  def test_can_store_data
+  should "store_data" do
     fixture_path = File.join ['test', 'fixtures', 'test']
+
     service = RSimpy::ProfileStorageService.new  fixture_path
     user = RSimpy::User.new 'foo','bar'
     service.save user

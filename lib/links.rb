@@ -30,13 +30,13 @@ module RSimpy
       execute RSimpy::PostingService.new(RSimpy::SAVE_LINK, RSimpy::Client.new(@user)), params
     end
 
-    def get params
-      execute RSimpy::QueryingService.new(RSimpy::GET_LINKS, RSimpy::Client.new(@user)), params
-    end
-
-    def delete params
-      execute RSimpy::PostingService.new(RSimpy::DELETE_LINK, RSimpy::Client.new(@user)), params
-    end
+#    def get params
+#      execute RSimpy::QueryingService.new(RSimpy::GET_LINKS, RSimpy::Client.new(@user)), params
+#    end
+#
+#    def delete params
+#      execute RSimpy::PostingService.new(RSimpy::DELETE_LINK, RSimpy::Client.new(@user)), params
+#    end
 
 
 

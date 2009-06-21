@@ -4,11 +4,7 @@ require 'errors/user_not_provided_error'
 
 
 class ClientTest < Test::Unit::TestCase
-  def test_connect
-    assert true
-  end
-
-  def test_get
+  should "get" do
     FakeWeb.allow_net_connect = false
     FakeWeb.register_uri("http://USERNAME:PASSWORD@www.simpy.com:80/simpy/api/rest/GetLinks.do", :string => get_response)
 
